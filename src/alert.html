@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <title>Pylon-Alert</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .notification {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+      }
+      .close-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #03a9f4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notification">
+      <h1>Notification</h1>
+      <p>This is a test notification.</p>
+      <button id="closeButton" class="close-button">Close</button>
+    </div>
+    <script>
+      document.addEventListener('pylonReady', function () {
+        document
+          .getElementById('closeButton')
+          .addEventListener('click', async function () {
+            await pylon.WindowAPI.close();
+          });
+      });
+    </script>
+  </body>
+</html>
