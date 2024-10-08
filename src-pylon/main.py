@@ -12,13 +12,13 @@ else:
 # set tray
 app.set_tray_actions(
     {
-        TrayEvent.DoubleClick: lambda: print("트레이 아이콘이 더블클릭되었습니다."),
+        TrayEvent.DoubleClick: lambda: print("Tray icon double-clicked."),
     }
 )
 app.set_tray_menu_items(
     [
-        {"label": "창 보이기", "callback": lambda: app.show_and_focus_main_window()},
-        {"label": "종료", "callback": lambda: app.quit()},
+        {"label": "Show Window", "callback": lambda: app.show_and_focus_main_window()},
+        {"label": "Quit", "callback": lambda: app.quit()},
     ]
 )
 app.run_tray()
