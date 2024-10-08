@@ -6,7 +6,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[('src-pylon/icons/', 'icons/'),
-             ('build/', 'build/'),
+             ('src/', 'src/'),
              ],
     hiddenimports=['PySide6.QtWebEngineCore'],
     hookspath=[],
