@@ -1,7 +1,7 @@
 from pylon import PylonApp, PylonAPI, Bridge, TrayEvent, is_production, get_production_path
 import os
 
-app = PylonApp(single_instance=True)
+app = PylonApp(app_name="Pylon-App", single_instance=True)
 
 # set icon
 if (is_production()):
