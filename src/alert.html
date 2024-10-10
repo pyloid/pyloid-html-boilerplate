@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
-    <title>Pylon-Alert</title>
+    <title>Pyloid-Alert</title>
     <style>
       body,
       html {
@@ -42,11 +42,11 @@
       <button id="closeButton" class="close-button">Close</button>
     </div>
     <script>
-      document.addEventListener('pylonReady', function () {
+      document.addEventListener('pyloidReady', function () {
         document
           .getElementById('closeButton')
           .addEventListener('click', async function () {
-            await pylon.WindowAPI.close();
+            await pyloid.WindowAPI.close();
           });
       });
     </script>

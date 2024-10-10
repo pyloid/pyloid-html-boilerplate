@@ -1,13 +1,13 @@
-from pylon import PylonApp, PylonAPI, Bridge, TrayEvent, is_production, get_production_path
+from pyloid import Pyloid, PyloidAPI, Bridge, TrayEvent, is_production, get_production_path
 import os
 
-app = PylonApp(app_name="Pylon-App", single_instance=True)
+app = Pyloid(app_name="Pyloid-App", single_instance=True)
 
 # set icon
 if (is_production()):
     app.set_icon(os.path.join(get_production_path(), "icons/icon.png"))
 else:
-    app.set_icon("src-pylon/icons/icon.png")
+    app.set_icon("src-pyloid/icons/icon.png")
 
 # set tray
 app.set_tray_actions(
@@ -24,11 +24,11 @@ app.set_tray_menu_items(
 app.run_tray()
 
 # set custom api
-class CustomAPI(PylonAPI):
+class CustomAPI(PyloidAPI):
     @Bridge(result=str)
     def create_window(self):
         window = app.create_window(
-            title="Pylon Alert",
+            title="Pyloid Alert",
             frame=False,
             context_menu=False,
             js_apis=[CustomAPI()],
@@ -54,7 +54,7 @@ class CustomAPI(PylonAPI):
 
 # create window
 window = app.create_window(
-    title="Pylon Browser1",
+    title="Pyloid Browser1",
     js_apis=[CustomAPI()],
     dev_tools=True
 )
