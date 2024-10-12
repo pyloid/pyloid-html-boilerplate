@@ -6,8 +6,12 @@ app = Pyloid(app_name="Pyloid-App", single_instance=True)
 # set icon
 if (is_production()):
     app.set_icon(os.path.join(get_production_path(), "icons/icon.png"))
+    app.set_tray_icon(os.path.join(get_production_path(), "icons/icon.png"))
+
 else:
     app.set_icon("src-pyloid/icons/icon.png")
+    app.set_tray_icon("src-pyloid/icons/icon.png")
+
 
 # set tray
 app.set_tray_actions(
@@ -21,7 +25,6 @@ app.set_tray_menu_items(
         {"label": "Quit", "callback": lambda: app.quit()},
     ]
 )
-app.run_tray()
 
 # set custom api
 class CustomAPI(PyloidAPI):
@@ -40,17 +43,20 @@ class CustomAPI(PyloidAPI):
         # set position to right bottom
         monitor = app.get_primary_monitor()
         available_size = monitor.available_size()
-        window.set_position(available_size['width'] - window.width, available_size['height'] - window.height)
+        window.set_position(
+            available_size['width'] - window.width, available_size['height'] - window.height)
 
         # load html
         if (is_production()):
-            window.load_file(os.path.join(get_production_path(), "src/alert.html"))
+            window.load_file(os.path.join(
+                get_production_path(), "src/alert.html"))
         else:
             window.load_file("src/alert.html")
         window.show()
         window.focus()
 
         return window.id
+
 
 # create window
 window = app.create_window(
