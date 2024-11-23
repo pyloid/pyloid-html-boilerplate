@@ -30,7 +30,7 @@ app.set_tray_menu_items(
 class CustomAPI(PyloidAPI):
     @Bridge(result=str)
     def create_window(self):
-        window = app.create_window(
+        window = self.app.create_window(
             title="Pyloid Alert",
             frame=False,
             context_menu=False,
